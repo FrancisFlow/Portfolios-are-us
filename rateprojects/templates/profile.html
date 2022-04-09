@@ -1,8 +1,22 @@
 {% extends 'base.html'%}
+{% load cloudinary %}
 
 {% block content %}
 
 <h1>{{user.username}}</h1>
+<div class="container">
 
+<img src="{{user.profile.profile_pic.url}}" style="width: 50%; height:100%">
+
+</div>
+
+<div>
+    <p> Bio: {{user.profile.bio}} </p>
+</div>
+<div>
+    <h3> Contact Information </h3>
+    <p>Phone number: {{user.profile.phone_number}}</p>
+    <p> Email Adress: {{user.email}}</p>
+</div>
 
 {% endblock %}
