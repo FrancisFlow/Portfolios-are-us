@@ -32,7 +32,7 @@ def new_post(request):
         form=NewProjectForm()
     return render(request, 'new_project.html', {'form':form})
 
-
+# user registration, loging and logout functions.
 
 def register_request(request):
     if request.method=='POST':
@@ -67,18 +67,26 @@ def login_request(request):
     form=AuthenticationForm()
     return render(request=request, template_name="main/login.html", context={"login_form":form})
 
+
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("/")
 
+#end user authentication functions.
 
 
 def profile(request):
+    """
+    Allow users to view profile information
+    """
     return render(request, 'profile.html')
 
 
 def update_profile(request):
+    """
+    Form for updating user profile information
+    """
     if request.method == 'POST':
         prof_form=UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if prof_form.is_valid():
