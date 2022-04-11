@@ -50,3 +50,19 @@ class Profile(models.Model):
         user=User.objects.get(id=user_id)
         self.photo=new_image
         self.save()
+
+
+    class Project(models.Model):
+        image=CloudinaryField('image')
+        project_name=models.CharField(max_length=50)
+        link=models.CharField(max_length=100)
+        date_posted=models.DateField(auto_now_add=True)
+        user=models.ForeignKey(User, on_delete=models.CASCADE, related_name='projects')
+        technologies=models.CharField(max_length=100)
+        categories=models.CharField(max_length=100)
+        details= models.CharField(max_length=100)
+
+        def __str__(self):
+            return self.project_name
+        
+    
