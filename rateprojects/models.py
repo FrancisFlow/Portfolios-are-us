@@ -52,7 +52,7 @@ class Profile(models.Model):
         self.save()
 
 
-    class Project(models.Model):
+class Project(models.Model):
         image=CloudinaryField('image')
         project_name=models.CharField(max_length=50)
         link=models.CharField(max_length=100)
@@ -71,6 +71,6 @@ class Profile(models.Model):
         def delete_project(self):
             self.delete()
 
-        # @classmethod
-        # def search_by_name(cls, search_term):
-        #     return Project.objects.filter(project_name__icontains=search_term)
+        @classmethod
+        def search_by_name(cls, search_term):
+            return Project.objects.filter(project_name__icontains=search_term)
