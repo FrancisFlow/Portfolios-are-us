@@ -1,3 +1,11 @@
+# ProjectArena
+
+# Author: Francis Ngigi
+
+
+## Description
+Project arena is a django web application that allows users to post projects they have done and have then reviewed by other members. In order for other members to review the application, they need to have signed in.
+
 
 
 ## Development
@@ -14,7 +22,7 @@ To make advancements/modifications, follow these steps:
 ## Technologies Used
 Technologies used to develop this application:
 1. Python 3.8.10
-2. Django 3.2.10
+2. Django 4.0.3
 3. Bootstrap4
 4. HTML5
 5. CSS3
