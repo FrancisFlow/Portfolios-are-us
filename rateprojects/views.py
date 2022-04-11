@@ -76,3 +76,19 @@ def logout_request(request):
 
 def profile(request):
     return render(request, 'profile.html')
+
+
+def update_profile(request):
+    if request.method == 'POST':
+        prof_form=UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if prof_form.is_valid():
+            prof_form.save()
+            return redirect('profile')
+    else:
+        prof_form=UpdateUserProfileForm(instance=request.user.profile)
+    
+    params={
+        'form':prof_form,
+    }
+
+    return render(request, 'update_profile.html', params)
