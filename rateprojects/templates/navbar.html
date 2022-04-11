@@ -26,4 +26,8 @@
         </li>
         {% endif %}
     </ul>
+    <form class="form-inline my-2 my-lg-0 search" action="{% url 'search_results' %}" >
+		<input class="form-control mr-sm-2" type="search" placeholder="Search for a project... " aria-label="Search" style="font-size: 15px;" name="projects">
+		<button class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="font-size: 15px;">Search</button>
+	  </form>
 </div>
