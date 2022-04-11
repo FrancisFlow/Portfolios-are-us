@@ -22,8 +22,13 @@ class NewUserForm(UserCreationForm):
 
 class NewProjectForm(forms.ModelForm):
     class Meta:
-        model=Project
+        model = Project
         exclude=['user', 'post_date']
         widgets={
             'tags':forms.CheckboxSelectMultiple(),
         }
+
+class UpdateUserProfileForm(forms.ModelForm):
+    class Meta:
+        model= Profile
+        fields = ['name', 'phone_number', 'profile_pic', 'bio']
