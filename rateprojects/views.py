@@ -103,9 +103,12 @@ def update_profile(request):
 
 
 
-def single_project(request):
-    pass
+def single_project(request, project_name):
+    project=Project.objects.get(project_name=project_name)
+    return render(request, 'single_project.html', {'project':project})
 
+
+    
 def search_results(request):
     if 'projects' in request.GET and request.GET['projects']:
         search_term=request.GET.get("projects")

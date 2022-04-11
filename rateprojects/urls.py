@@ -10,6 +10,6 @@ urlpatterns= [
     path('profile/', views.profile, name='profile'),
     path('new_project/', views.new_post, name='new_project'),
     path('update_profile/', views.update_profile, name='update_profile'),
-    path('single_project/<int:id>/', views.single_project, name='single_project'),
+    path('single_project/<project_name>/', views.single_project, name='single_project'),
     path('search/', views.search_results, name='search_results'),
 ]
