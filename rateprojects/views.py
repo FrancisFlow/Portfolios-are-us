@@ -80,7 +80,8 @@ def profile(request):
     """
     Allow users to view profile information
     """
-    return render(request, 'profile.html')
+    projects=Project.objects.all().order_by('date_posted')
+    return render(request, 'profile.html', {'projects':projects} )
 
 
 def update_profile(request):
@@ -108,7 +109,7 @@ def single_project(request, project_name):
     return render(request, 'single_project.html', {'project':project})
 
 
-    
+
 def search_results(request):
     if 'projects' in request.GET and request.GET['projects']:
         search_term=request.GET.get("projects")

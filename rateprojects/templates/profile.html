@@ -19,4 +19,12 @@
     <p> Email Adress: {{user.email}}</p>
 </div>
 
+<div>
+    {% for project in projects %}
+    {% if project.user == user %}
+    {{ project.project_name }}
+    {% endif %}
+    {% endfor %}
+</div>
+
 {% endblock %}
