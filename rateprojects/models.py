@@ -65,4 +65,12 @@ class Profile(models.Model):
         def __str__(self):
             return self.project_name
         
-    
+        def save_project(self):
+            self.save()
+
+        def delete_project(self):
+            self.delete()
+
+        # @classmethod
+        # def search_by_name(cls, search_term):
+        #     return Project.objects.filter(project_name__icontains=search_term)

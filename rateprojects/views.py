@@ -1,13 +1,28 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewUserForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .models import Project, Profile
 # Create your views here.
+@login_required(login_url='/login/')
 def home(request):
-    return render(request, 'home.html')
+    """
+    View function for the home page
+    """
+    projects=Project.objects.all().order_by('date_posted')
+    users=User.objects.exclude(id=request.user.id).all()
+    current_user=request.user
+    return render(request, 'home.html', {'projects':projects, 'users':users, "current_user":current_user})
 
+
+@login_required(login_url='/login')
+def new_post(request):
+    # current_user=request.user
+    # if request.method=='POST':
+    pass
 
 def register_request(request):
     if request.method=='POST':

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
+from .models import Project, Profile
 
 # Create your forms here 
 
@@ -19,3 +19,11 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class NewProjectForm(forms.ModelForm):
+    class Meta:
+        model=Project
+        exclude=['user', 'post_date']
+        widgets={
+            'tags':forms.CheckboxSelectMultiple(),
+        }
