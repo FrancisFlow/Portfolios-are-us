@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% if projects %}
+        <h3>Found {{ projects | length }} projects  </h3>
+        {% else %}
+        <h3> Found 0 projects related to term {{message}} </h3>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% for project in projects %}
+        <a href="{% url 'project' project.id %}"><span style="display: none;"></span><img
+            src="{{ project.image.url }}" class="img-thumbnail" width="500"></a>
+            <li class="row mt-5">
+                <div class="col-md-3">
+                    <p>Project Name: {{project.project.name}}</p>
+                    <p> Project Details: {{project.details}}</p>
+                    <p> Project Technologies: {{ project.technologies}}</p>
+                    <p> Project Category: {{ project.categories}}</p>
+                    <p> <a href="{{project.link}}"></a> Project link</p>
+                </div>
+
+            </li>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
