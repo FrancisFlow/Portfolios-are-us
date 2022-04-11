@@ -29,3 +29,24 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_profile(sender, instance, **kwargs):
         instance.profile.save()
+
+    
+    @classmethod
+    def search_profile(cls, name):
+        return cls.objects.filter(user__username__icontains=name)
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+    
+    def update_bio(self, new_bio):
+        self.bio=new_bio
+        self.save()
+
+    
+    def update_image(self, user_id, new_image):
+        user=User.objects.get(id=user_id)
+        self.photo=new_image
+        self.save()
