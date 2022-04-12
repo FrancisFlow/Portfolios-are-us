@@ -92,5 +92,6 @@ class Rating(models.Model):
 
     def save_rating(self):
         self.save()
+        
     def delete_ratings(self):
         self.delete()

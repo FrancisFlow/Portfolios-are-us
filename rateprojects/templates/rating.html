@@ -21,7 +21,7 @@
             </div>
             <div class="panel-body" style="background-color: #f7fbfc; color: black;">
                   
-                <form  action="{% url 'review' project.id %}" method="post" enctype="multipart/form-data">
+                <form  method="POST" enctype="multipart/form-data">
                    
 					{%csrf_token%}
 

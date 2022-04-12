@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Project, Profile
+from .models import Project, Profile, Rating
 # Create your views here.
 @login_required(login_url='/login/')
 def home(request):
@@ -106,7 +106,9 @@ def update_profile(request):
 
 def single_project(request, project_name):
     project=Project.objects.get(project_name=project_name)
-    return render(request, 'single_project.html', {'project':project})
+    post=project.id
+    ratings=Rating.objects.filter(post=project.id)
+    return render(request, 'single_project.html', {'project':project, 'ratings':ratings})
 
 
 
@@ -134,7 +136,7 @@ def review(request, id):
             rating.post=current_project
             rating.user= current_user
             rating.save()
-            return redirect('project', id)
+            return redirect('single_project', current_project.project_name)
     else:
         form=ProjectRateForm()
     return render(request, 'rating.html', {'form': form})

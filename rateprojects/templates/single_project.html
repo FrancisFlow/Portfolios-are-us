@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{ % load mathfilters %}
 
 {% block content %}
 
@@ -16,8 +17,28 @@
     <p>Project category: {{project.categories }} </p>
     <a href="https://{{project.link}}"> Project link </a> 
     <h6>Project Owner: {{project.user.username}}</h6>
-</div>
-    </div>
+    <br>
+    <br>
+    
+    <h3> Reviews </h3>
+    {% for rating in ratings %}
+    <div style="padding:15px"> 
+     Usability: {{rating.usability_rating }}
+    <br>
+      Design: {{rating.design_rating}}
+      <br>
+      Content: {{rating.content_rating}}
+      <br>
+        {% with numerator=rating.usability_rating|add:rating.content_rating|add:rating.design_rating %}
+      Overall rating: {%widthratio numerator 3 1 %}
+      {% endwith %}
+      <br>
+      Review: {{rating.review}}
+      <br>
+      </div>
+    
+  {% endfor %}
+
 </div>
 </div>
 
