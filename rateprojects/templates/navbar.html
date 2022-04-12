@@ -1,28 +1,32 @@
 <div>
-    <ul>
+    <nav class="navbar navbar-dark bg-dark navbar navbar-expand-lg">
+        <!-- Navbar content -->
+        <a class="navbar-brand" href="#">ProjectArena</a>
+
+    <ul class="navbar-nav" >
      <li>
          <a href="/"> Home</a>
      </li>
         {% if user.is_authenticated %}
-        <li>
-            <a href="/logout">Logout</a>
-        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li >
 
-        <li>
-            <a href="#"> Welcome, {{user.username}} </a>
+        <li class="nav-item" >
+            <a class="nav-link"href="#"> Welcome, {{user.username}} </a>
         </li>
-        <li>
-            <a href="/profile">My profile</a>
+        <li class="nav-item"> >
+            <a  class="nav-link" href="/profile">My profile</a>
         </li>
-        <li>
-            <a href="/update_profile">Update your profile</a>
+        <li  class="nav-item">
+            <a class="nav-link"  href="/update_profile">Update your profile</a>
         </li>
-        <li>
-            <a href="/new_project">Add a project</a>
+        <li class="nav-item">
+            <a   class="nav-link" href="/new_project">Add a project</a>
         </li>
         {% else %}
-        <li>
-            <a href="/login">Login</a>
+        <li class="nav-item"> >
+            <a class="nav-link" href="/login">Login</a>
         </li>
         {% endif %}
     </ul>
@@ -30,4 +34,5 @@
 		<input class="form-control mr-sm-2" type="search" placeholder="Search for a project... " aria-label="Search" style="font-size: 15px;" name="projects">
 		<button class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="font-size: 15px;">Search</button>
 	  </form>
+      </nav>
 </div>
