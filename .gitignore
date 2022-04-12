@@ -1,3 +1,4 @@
 projectworld/
 *.pyc
 projectarena/settings.py
+.env

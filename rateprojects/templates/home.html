@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="text-center" >I work master. I really work. </h1>
 
 {% for project in projects %}
-<a href="single_project/{{project.project_name}}/">Single view</a>
+<div class="container" >
+    <div class="row col-md-4">
+
 <img src="{{ project.image.url}}" style="max-height:50%; max-width:50%;">
-{{project.project_name}}
+<p> Project Name: {{project.project_name}}</p>
 <a href="https://{{project.link}}"> Project link </a> 
-{{project.details}}
-{{ project.technologies }}
+<a href="single_project/{{project.project_name}}/">Single view</a>
+
+<p>{{project.details}}</p>
+<br><p>
+  Technologies:  {{ project.technologies }} </p>
+<br>
 {{project.categories }}
+
 <h6>Posted by {{project.user.username}}</h6>
 
-
+</div>
 {% endfor %}
-
+</div>
 {% endblock %}

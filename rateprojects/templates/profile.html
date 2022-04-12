@@ -23,6 +23,8 @@
     {% for project in projects %}
     {% if project.user == user %}
     {{ project.project_name }}
+    <a href="{% url 'single_project' project.project_name %}">Single view</a>
+
     {% endif %}
     {% endfor %}
 </div>

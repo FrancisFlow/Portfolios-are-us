@@ -1,0 +1,1 @@
+web: gunicorn projectarena.wsgi --log-file -
