@@ -1,29 +1,49 @@
+<style>
+    li{
+        padding:0, 5px;
+    }
+    form{
+        padding-left: 5rem;
+    }
+
+</style>
+
 <div>
     <nav class="navbar navbar-dark bg-dark navbar navbar-expand-lg">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="#">ProjectArena</a>
-
+        <a class="navbar-brand" href="/">ProjectArena</a>
+        <a  class="navbar-brand" href="/">  Home  </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav" >
-     <li>
-         <a href="/"> Home</a>
-     </li>
+     
         {% if user.is_authenticated %}
-        <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-        </li >
+    
 
         <li class="nav-item" >
             <a class="nav-link"href="#"> Welcome, {{user.username}} </a>
         </li>
-        <li class="nav-item"> >
-            <a  class="nav-link" href="/profile">My profile</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More actions
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a  class="dropdown-item" href="/profile">My profile</a>
+                <a class="dropdown-item"  href="/update_profile">Update your profile</a>
+                <div class="dropdown-divider"></div>
+                <a   class="dropdown-item" href="/new_project">Add a project</a>
+                </div>
+
+
         </li>
-        <li  class="nav-item">
-            <a class="nav-link"  href="/update_profile">Update your profile</a>
-        </li>
+
         <li class="nav-item">
-            <a   class="nav-link" href="/new_project">Add a project</a>
-        </li>
+            <a class="nav-link" href="/logout">Logout</a>
+        </li >
+
         {% else %}
         <li class="nav-item"> >
             <a class="nav-link" href="/login">Login</a>
@@ -34,5 +54,6 @@
 		<input class="form-control mr-sm-2" type="search" placeholder="Search for a project... " aria-label="Search" style="font-size: 15px;" name="projects">
 		<button class="btn btn-outline-warning my-2 my-sm-0" type="submit" style="font-size: 15px;">Search</button>
 	  </form>
+      </div>
       </nav>
 </div>

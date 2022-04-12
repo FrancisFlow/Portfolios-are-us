@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import NewUserForm, UpdateUserProfileForm, NewProjectForm
+from .forms import NewUserForm, UpdateUserProfileForm, NewProjectForm, ProjectRateForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -121,3 +121,20 @@ def search_results(request):
     else:
         message="You haven't searched for any term"
         return render(request,'search.html', {'message': message, "projects":searched_projects})
+
+
+def review(request, id):
+    current_user=request.user
+    current_project=Project.objects.get(id=id)
+
+    if request.method=='POST':
+        form=ProjectRateForm(request.POST)
+        if form.is_valid():
+            rating=form.save(commit=False)
+            rating.post=current_project
+            rating.user= current_user
+            rating.save()
+            return redirect('project', id)
+    else:
+        form=ProjectRateForm()
+    return render(request, 'rating.html', {'form': form})
