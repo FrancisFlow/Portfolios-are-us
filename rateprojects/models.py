@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from cloudinary.models import CloudinaryField
 from tinymce.models import HTMLField
@@ -81,9 +82,9 @@ class Rating(models.Model):
     post=models.ForeignKey(Project, on_delete=models.CASCADE)
     pub_date=models.DateField(auto_now_add=True)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
-    usability_rating=models.IntegerField(defaul=0, null=True, blank=True)
-    design_rating=models.IntegerField(defaul=0, null=True, blank=True)
-    content_rating=models.IntegerField(defaul=0, null=True, blank=True)
+    usability_rating=models.IntegerField(default=0, null=True, blank=True)
+    design_rating=models.IntegerField(default=0, null=True, blank=True)
+    content_rating=models.IntegerField(default=0, null=True, blank=True)
     review=models.CharField(max_length=200)
 
     def __str__(self):
