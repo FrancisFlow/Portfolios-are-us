@@ -93,6 +93,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'projectarena.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

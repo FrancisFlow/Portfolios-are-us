@@ -1,25 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-{% for project in projects %}
 <div class="container" >
-    <div class="row col-md-4">
+    <div class="row">
+{% for project in projects %}
+        <div class="col-md-4">
+        <div  class="text-center" style="padding: 10px;" >
 
-<img src="{{ project.image.url}}" style="max-height:50%; max-width:50%;">
-<p> Project Name: {{project.project_name}}</p>
-<a href="https://{{project.link}}"> Project link </a> 
-<a href="single_project/{{project.project_name}}/">Single view</a>
+<img src="{{ project.image.url}}" class="img-responsive" style=" max-width:80%; max-height: 80%;">
+<p class="text-center"> Project Name: {{project.project_name}}</p>
+<!-- <a href="https://{{project.link}}"> Project link </a>  -->
+<a href="single_project/{{project.project_name}}/">View Project</a>
 
-<p>{{project.details}}</p>
-<br><p>
-  Technologies:  {{ project.technologies }} </p>
-<br>
-{{project.categories }}
-
-<h6>Posted by {{project.user.username}}</h6>
+        </div>
+        </div>
+        {% endfor %}
 
 </div>
-{% endfor %}
 </div>
 {% endblock %}
