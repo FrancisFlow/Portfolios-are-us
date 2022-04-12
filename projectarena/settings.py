@@ -56,8 +56,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-muon&n@wzsu8%)vq-ib*i0t!g%i!dgx!=lf(g@%404&@pc5ihi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -162,7 +160,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS=(
-    os.path.join(BASE_DIR, 'staticfiles')
+    os.path.join(BASE_DIR, 'staticfiles'),
 )
 
 # Simplified static file serving.
