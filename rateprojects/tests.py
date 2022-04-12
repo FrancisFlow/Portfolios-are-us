@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Profile, Project
+from .models import Profile, Project, Rating
 from django.contrib.auth.models import User
 # Create your tests here.
 
@@ -47,3 +47,34 @@ class ProjectTestClass(TestCase):
 
 
 
+class RatingTestClass(TestCase):
+    def setUp(self):
+        self.francis=User(username="Francis", email="Francis@example.com", password="password" )
+        self.profile=Profile(user=self.francis, profile_pic='image.jpg', phone_number=2222222222, bio='I am developers')
+        self.project=Project(project_name='blank', image='image2.jpg', link='http://example.com', categories='website', user=self.francis)
+        self.rating=Rating(user=self.francis,post=self.project, usability_rating= 1,design_rating=3, content_rating=8, review="great" )
+        self.francis.save()
+        self.project.save_project()
+        self.rating.save_rating()
+
+    def tearDown(self):
+        Profile.objects.all().delete()
+        User.objects.all().delete()
+        Project.objects.all().delete()   
+        Rating.objects.all().delete() 
+    
+    def test_rating_instance(self):
+        self.assertTrue(isinstance(self.rating, Rating))
+
+    def test_save_rating(self):
+        ratings = Rating.objects.all()
+        self.assertTrue(len(ratings)>0)
+
+    def test_delete_rating(self):
+        rating1 = Rating.objects.all()
+        self.assertEqual(len(rating1),1)
+
+        self.rating.delete_rating()
+
+        rating2 = Rating.objects.all()
+        self.assertEqual(len(rating2),0)    

@@ -74,3 +74,22 @@ class Project(models.Model):
         @classmethod
         def search_by_name(cls, search_term):
             return Project.objects.filter(project_name__icontains=search_term)
+
+
+class Rating(models.Model):
+
+    post=models.ForeignKey(Project, on_delete=models.CASCADE)
+    pub_date=models.DateField(auto_now_add=True)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    usability_rating=models.IntegerField(defaul=0, null=True, blank=True)
+    design_rating=models.IntegerField(defaul=0, null=True, blank=True)
+    content_rating=models.IntegerField(defaul=0, null=True, blank=True)
+    review=models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.review
+
+    def save_rating(self):
+        self.save()
+    def delete_ratings(self):
+        self.delete()
